@@ -1,5 +1,7 @@
 # [gulp](http://gulpjs.com)-responsive [![Build Status](https://travis-ci.org/mahnunchik/gulp-responsive.svg?branch=master)](https://travis-ci.org/mahnunchik/gulp-responsive)
 
+this is literally the same as [the original](https://github.com/mahnunchik/gulp-responsive) except with a bumped sharp version because my npm complained okay
+
 [![Greenkeeper badge](https://badges.greenkeeper.io/mahnunchik/gulp-responsive.svg)](https://greenkeeper.io/)
 
 > Generates images at different sizes

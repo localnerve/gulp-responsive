@@ -1,5 +1,5 @@
 {
-  "name": "gulp-responsive",
+  "name": "@cjquines/gulp-responsive",
   "version": "3.0.1",
   "description": "small patch for gulp-responsive",
   "main": "lib",
