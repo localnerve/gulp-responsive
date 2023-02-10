@@ -30,5 +30,6 @@ exports.assertFile = assertFile
 
 // Force mute gulp logger in test environment
 if (process.env.NODE_ENV === 'test') {
+  // eslint-disable-next-line
   flog = function () {}
 }

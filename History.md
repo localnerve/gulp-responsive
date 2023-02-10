@@ -1,4 +1,9 @@
 
+# 4.0.0 / 2023-02-10
+- Update sharp to 0.31.3
+- Update all dependencies, remove unused or replacable deps
+- Node 14+
+
 # 3.0.0 / 2019-10-12
 
 - Suport for sharp `0.23.1` [#129](https://github.com/mahnunchik/gulp-responsive/pull/129)
