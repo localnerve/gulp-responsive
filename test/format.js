@@ -10,9 +10,9 @@ const helpers = require('./helpers')
 const makeFile = helpers.makeFile
 const assertFile = helpers.assertFile
 
-const fileType = require('file-type')
+describe('gulp-responsive', async function () {
+  const { fileTypeFromBuffer: fileType } = await import('file-type')
 
-describe('gulp-responsive', function () {
   describe('image format', function () {
     it('should convert image type to specified by `format` option', function (done) {
       const config = [
@@ -23,9 +23,11 @@ describe('gulp-responsive', function () {
       ]
       const stream = responsive(config)
 
-      stream.on('data', function (file) {
+      stream.on('data', async function (file) {
         assertFile(file)
-        assert.strictEqual(fileType(file.contents).mime, 'image/jpeg')
+
+        const result = await fileType(file.contents)
+        assert.strictEqual(result.mime, 'image/jpeg')
       })
 
       stream.on('end', function () {
@@ -45,9 +47,11 @@ describe('gulp-responsive', function () {
       ]
       const stream = responsive(config)
 
-      stream.on('data', function (file) {
+      stream.on('data', async function (file) {
         assertFile(file)
-        assert.strictEqual(fileType(file.contents).mime, 'image/jpeg')
+
+        const result = await fileType(file.contents)
+        assert.strictEqual(result.mime, 'image/jpeg')
       })
 
       stream.on('end', function () {
@@ -68,9 +72,11 @@ describe('gulp-responsive', function () {
       ]
       const stream = responsive(config)
 
-      stream.on('data', function (file) {
+      stream.on('data', async function (file) {
         assertFile(file)
-        assert.strictEqual(fileType(file.contents).mime, 'image/webp')
+
+        const result = await fileType(file.contents)
+        assert.strictEqual(result.mime, 'image/webp')
       })
 
       stream.on('end', function () {
