@@ -32,11 +32,6 @@
     "gulp-responsive",
     "gulp-responsive-images"
   ],
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm test"
-    }
-  },
   "dependencies": {
     "chalk": "^4.1.2",
     "fancy-log": "^2.0.0",
@@ -50,7 +45,6 @@
   },
   "devDependencies": {
     "file-type": "^18.2.0",
-    "husky": "^8.0.3",
     "jshint": "^2.13.6",
     "mocha": "^10.2.0",
     "standard": "^17.0.0"
