@@ -1,16 +1,10 @@
 /* global describe, it */
-
-'use strict'
-
-const responsive = require('../')
-
-const helpers = require('./helpers')
-const makeFile = helpers.makeFile
-const assertFile = helpers.assertFile
+import responsive from '../lib/index.js'
+import { makeFile, assertFile } from './helpers.js'
 
 describe('gulp-responsive', function () {
-  function runTest (config, cb) {
-    const stream = responsive(config)
+  async function runTest (config, cb) {
+    const stream = await responsive(config)
     stream.on('end', function () {
       cb()
     })

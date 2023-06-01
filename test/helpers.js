@@ -1,35 +1,26 @@
-'use strict'
-
 // eslint-disable-next-line
-let flog = require('fancy-log')
-const assert = require('assert')
-const path = require('path')
-const fs = require('fs')
-const Vinyl = require('vinyl')
+import assert from 'assert'
+import path from 'path'
+import fs from 'fs'
+import Vinyl from 'vinyl'
+import * as url from 'url'
 
-function makeFile (name, file) {
+const thisDirname = url.fileURLToPath(new URL('.', import.meta.url))
+
+export function makeFile (name, file) {
   if (!file) {
     file = name
   }
   return new Vinyl({
-    base: path.join(__dirname, '/fixtures'),
-    path: path.join(__dirname, '/fixtures/', name),
-    contents: fs.readFileSync(path.join(__dirname, '/fixtures/', file))
+    base: path.join(thisDirname, '/fixtures'),
+    path: path.join(thisDirname, '/fixtures/', name),
+    contents: fs.readFileSync(path.join(thisDirname, '/fixtures/', file))
   })
 }
 
-function assertFile (file) {
+export function assertFile (file) {
   assert(file)
   assert(file.base)
   assert(file.path)
   assert(file.contents)
-}
-
-exports.makeFile = makeFile
-exports.assertFile = assertFile
-
-// Force mute gulp logger in test environment
-if (process.env.NODE_ENV === 'test') {
-  // eslint-disable-next-line
-  flog = function () {}
 }

@@ -1,8 +1,8 @@
-# [gulp](http://gulpjs.com)-responsive [![Build Status](https://travis-ci.org/mahnunchik/gulp-responsive.svg?branch=master)](https://travis-ci.org/mahnunchik/gulp-responsive)
+# [gulp](http://gulpjs.com)-responsive 
 
-this is literally the same as [the original](https://github.com/mahnunchik/gulp-responsive) except with a bumped sharp version because my npm complained okay
+![Verify](https://github.com/localnerve/gulp-responsive/workflows/Verify/badge.svg)
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/mahnunchik/gulp-responsive.svg)](https://greenkeeper.io/)
+> This is the same as [the original](https://github.com/mahnunchik/gulp-responsive) except with updated dependencies and code
 
 > Generates images at different sizes
 
@@ -19,8 +19,8 @@ $ npm install --save-dev gulp-responsive
 ## Usage
 
 ```js
-var gulp = require('gulp')
-var responsive = require('gulp-responsive')
+import gulp from 'gulp'
+import responsive from 'gulp-responsive'
 
 gulp.task('default', function () {
   return gulp

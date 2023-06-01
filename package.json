@@ -1,20 +1,33 @@
 {
   "name": "@localnerve/gulp-responsive",
-  "version": "4.0.0",
+  "version": "5.0.0",
   "description": "small patch for gulp-responsive",
-  "main": "lib",
+  "type": "module",
+  "exports": {
+    "import": "./lib/index.js",
+    "default": "./lib/index.js"
+  },
   "license": "MIT",
-  "repository": "cjquines/gulp-responsive",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/localnerve/gulp-responsive.git"
+  },
   "author": {
     "name": "Evgeny Vlasenko",
     "email": "mahnunchik+responsive@gmail.com",
     "url": "https://github.com/mahnunchik"
   },
+  "contributors": [{
+    "name" : "Alex Grant",
+    "email" : "alex@localnerve.com",
+    "url" : "https://www.localnerve.com"
+  }],
   "engines": {
-    "node": ">=14"
+    "node": ">=16"
   },
   "scripts": {
     "test": "npm run lint && mocha",
+    "test:debug": "mocha --inspect-brk",
     "lint": "standard",
     "lint:fix": "standard --fix"
   },
@@ -33,20 +46,18 @@
     "gulp-responsive-images"
   ],
   "dependencies": {
-    "chalk": "^4.1.2",
+    "chalk": "^5.2.0",
     "fancy-log": "^2.0.0",
-    "minimatch": "^6.1.6",
+    "minimatch": "^9.0.1",
     "plugin-error": "^2.0.1",
-    "plur": "^4.0.0",
+    "plur": "^5.1.0",
     "rename": "^1.0.4",
-    "sharp": "^0.31.3",
-    "through2": "^4.0.2",
+    "sharp": "^0.32.1",
     "vinyl": "^3.0.0"
   },
   "devDependencies": {
     "file-type": "^18.2.0",
-    "jshint": "^2.13.6",
     "mocha": "^10.2.0",
-    "standard": "^17.0.0"
+    "standard": "^17.1.0"
   }
 }

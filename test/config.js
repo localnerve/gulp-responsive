@@ -1,9 +1,6 @@
 /* global describe, it */
-
-'use strict'
-
-const assert = require('assert')
-const prepareConfig = require('../lib/config')
+import assert from 'assert'
+import prepareConfig from '../lib/config.js'
 
 describe('gulp-responsive', function () {
   describe('config', function () {
