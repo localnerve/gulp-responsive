@@ -1,9 +1,6 @@
 /* global describe, it */
-
-'use strict'
-
-const assert = require('assert')
-const size = require('../lib/size')
+import assert from 'assert'
+import size from '../lib/size.js'
 
 describe('gulp-responsive', function () {
   describe('size parser', function () {

@@ -1,5 +1,14 @@
+# 5.0.0
+
+- Update sharp to 0.32.1
+- Update all dependencies
+- Remove through2 dependency
+- Switch to eslint
+- Switch to esm
+- Node 16+
 
 # 4.0.0 / 2023-02-10
+
 - Update sharp to 0.31.3
 - Update all dependencies, remove unused or replacable deps
 - Node 14+

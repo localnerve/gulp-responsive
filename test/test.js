@@ -1,19 +1,19 @@
 /* global describe, it */
+import assert from 'assert'
+import path from 'path'
+import responsive from '../lib/index.js'
+import { makeFile, assertFile } from './helpers.js'
+import * as url from 'node:url'
 
-'use strict'
-
-const assert = require('assert')
-const path = require('path')
-
-const responsive = require('../')
-
-const helpers = require('./helpers')
-const makeFile = helpers.makeFile
-const assertFile = helpers.assertFile
+const thisDirname = url.fileURLToPath(new URL('.', import.meta.url))
 
 describe('gulp-responsive', function () {
-  it('should not do anything without images and configs', function (cb) {
-    const stream = responsive()
+  it('should not do anything without images and configs', async function () {
+    let cb
+    const result = new Promise(resolve => {
+      cb = resolve
+    })
+    const stream = await responsive()
 
     stream.on('end', cb)
     stream.on('data', function () {
@@ -21,15 +21,20 @@ describe('gulp-responsive', function () {
     })
 
     stream.end()
+    return result
   })
 
-  it('should provide one image when exactly one image and one config are provided', function (cb) {
+  it('should provide one image when exactly one image and one config are provided', async function () {
+    let cb
+    const result = new Promise(resolve => {
+      cb = resolve
+    })
     const config = [
       {
         name: 'gulp.png'
       }
     ]
-    const stream = responsive(config)
+    const stream = await responsive(config)
 
     let counter = 0
 
@@ -48,16 +53,21 @@ describe('gulp-responsive', function () {
 
     stream.write(makeFile('gulp.png'))
     stream.end()
+    return result
   })
 
-  it('should support source file in SVG format', function (cb) {
+  it('should support source file in SVG format', async function () {
+    let cb
+    const result = new Promise(resolve => {
+      cb = resolve
+    })
     const config = [
       {
         name: 'gulp.svg',
         format: 'png'
       }
     ]
-    const stream = responsive(config)
+    const stream = await responsive(config)
 
     let counter = 0
 
@@ -76,9 +86,14 @@ describe('gulp-responsive', function () {
 
     stream.write(makeFile('gulp.svg'))
     stream.end()
+    return result
   })
 
-  it('should provide two image when one image and exactly two configs are provided', function (cb) {
+  it('should provide two image when one image and exactly two configs are provided', async function () {
+    let cb
+    const result = new Promise(resolve => {
+      cb = resolve
+    })
     const config = [
       {
         name: 'gulp.png'
@@ -87,7 +102,7 @@ describe('gulp-responsive', function () {
         name: 'gulp.png'
       }
     ]
-    const stream = responsive(config)
+    const stream = await responsive(config)
 
     let counter = 0
 
@@ -106,9 +121,14 @@ describe('gulp-responsive', function () {
 
     stream.write(makeFile('gulp.png'))
     stream.end()
+    return result
   })
 
-  it('should provide two image when one image match two configs', function (cb) {
+  it('should provide two image when one image match two configs', async function () {
+    let cb
+    const result = new Promise(resolve => {
+      cb = resolve
+    })
     const config = [
       {
         name: 'gulp.png'
@@ -117,7 +137,7 @@ describe('gulp-responsive', function () {
         name: '*.png'
       }
     ]
-    const stream = responsive(config)
+    const stream = await responsive(config)
 
     let counter = 0
 
@@ -136,23 +156,28 @@ describe('gulp-responsive', function () {
 
     stream.write(makeFile('gulp.png'))
     stream.end()
+    return result
   })
 
   describe('rename image', function () {
-    it('should provide renamed image when rename is string', function (cb) {
+    it('should provide renamed image when rename is string', async function () {
+      let cb
+      const result = new Promise(resolve => {
+        cb = resolve
+      })
       const config = [
         {
           name: 'gulp.png',
           rename: 'test.png'
         }
       ]
-      const stream = responsive(config)
+      const stream = await responsive(config)
 
       stream.on('data', function (file) {
         assertFile(file)
         assert.strictEqual(
           file.path,
-          path.join(__dirname, '/fixtures/', 'test.png')
+          path.join(thisDirname, '/fixtures/', 'test.png')
         )
       })
 
@@ -162,9 +187,14 @@ describe('gulp-responsive', function () {
 
       stream.write(makeFile('gulp.png'))
       stream.end()
+      return result
     })
 
-    it('should provide renamed image when rename is object', function (cb) {
+    it('should provide renamed image when rename is object', async function () {
+      let cb
+      const result = new Promise(resolve => {
+        cb = resolve
+      })
       const config = [
         {
           name: 'gulp.png',
@@ -173,13 +203,13 @@ describe('gulp-responsive', function () {
           }
         }
       ]
-      const stream = responsive(config)
+      const stream = await responsive(config)
 
       stream.on('data', function (file) {
         assertFile(file)
         assert.strictEqual(
           file.path,
-          path.join(__dirname, '/fixtures/', 'gulp-renamed.png')
+          path.join(thisDirname, '/fixtures/', 'gulp-renamed.png')
         )
       })
 
@@ -189,9 +219,14 @@ describe('gulp-responsive', function () {
 
       stream.write(makeFile('gulp.png'))
       stream.end()
+      return result
     })
 
-    it('should provide renamed image when rename is function', function (cb) {
+    it('should provide renamed image when rename is function', async function () {
+      let cb
+      const result = new Promise(resolve => {
+        cb = resolve
+      })
       const config = [
         {
           name: 'gulp.png',
@@ -201,13 +236,13 @@ describe('gulp-responsive', function () {
           }
         }
       ]
-      const stream = responsive(config)
+      const stream = await responsive(config)
 
       stream.on('data', function (file) {
         assertFile(file)
         assert.strictEqual(
           file.path,
-          path.join(__dirname, '/fixtures/', 'gulp-renamed-by-function.png')
+          path.join(thisDirname, '/fixtures/', 'gulp-renamed-by-function.png')
         )
       })
 
@@ -217,12 +252,17 @@ describe('gulp-responsive', function () {
 
       stream.write(makeFile('gulp.png'))
       stream.end()
+      return result
     })
   })
 
   describe('unmatched/unused images', function () {
-    it('should not pass through unmatched file by default when `errorOnUnusedImage` is false', function (cb) {
-      const stream = responsive(
+    it('should not pass through unmatched file by default when `errorOnUnusedImage` is false', async function () {
+      let cb
+      const result = new Promise(resolve => {
+        cb = resolve
+      })
+      const stream = await responsive(
         {},
         {
           errorOnUnusedImage: false
@@ -242,12 +282,17 @@ describe('gulp-responsive', function () {
 
       stream.write(makeFile('gulp.png'))
       stream.end()
+      return result
     })
 
-    it('should pass through unmatched file when `passThroughUnused` is true and `errorOnUnusedImage` is false', function (cb) {
+    it('should pass through unmatched file when `passThroughUnused` is true and `errorOnUnusedImage` is false', async function () {
+      let cb
+      const result = new Promise(resolve => {
+        cb = resolve
+      })
       const expectedFile = makeFile('gulp.png')
 
-      const stream = responsive(
+      const stream = await responsive(
         {},
         {
           errorOnUnusedImage: false,
@@ -273,9 +318,14 @@ describe('gulp-responsive', function () {
 
       stream.write(expectedFile)
       stream.end()
+      return result
     })
 
-    it('should skip enlarged image when `skipOnEnlargement` is true', function (cb) {
+    it('should skip enlarged image when `skipOnEnlargement` is true', async function () {
+      let cb
+      const result = new Promise(resolve => {
+        cb = resolve
+      })
       const config = [
         {
           name: 'gulp.png',
@@ -283,7 +333,7 @@ describe('gulp-responsive', function () {
         }
       ]
 
-      const stream = responsive(config, {
+      const stream = await responsive(config, {
         errorOnEnlargement: false,
         skipOnEnlargement: true
       })
@@ -298,6 +348,7 @@ describe('gulp-responsive', function () {
 
       stream.write(makeFile('gulp.png'))
       stream.end()
+      return result
     })
   })
 })
