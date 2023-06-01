@@ -8,7 +8,7 @@ describe('gulp-responsive', async function () {
   const { fileTypeFromBuffer: fileType } = await import('file-type')
 
   describe('image format', function () {
-    it('should convert image type to specified by `format` option', async function () {
+    it('should convert image type to specified by `format` option', function () {
       let done
       const result = new Promise(resolve => {
         done = resolve
@@ -20,7 +20,7 @@ describe('gulp-responsive', async function () {
           format: 'jpeg'
         }
       ]
-      const stream = await responsive(config)
+      const stream = responsive(config)
 
       stream.on('data', async function (file) {
         assertFile(file)
@@ -38,7 +38,7 @@ describe('gulp-responsive', async function () {
       return result
     })
 
-    it('should convert image type to format parsed from output image name', async function () {
+    it('should convert image type to format parsed from output image name', function () {
       let done
       const result = new Promise(resolve => {
         done = resolve
@@ -50,7 +50,7 @@ describe('gulp-responsive', async function () {
           rename: 'gulp.jpg'
         }
       ]
-      const stream = await responsive(config)
+      const stream = responsive(config)
 
       stream.on('data', async function (file) {
         assertFile(file)
@@ -68,7 +68,7 @@ describe('gulp-responsive', async function () {
       return result
     })
 
-    it('should convert image type to specified by `format` option with custom extension', async function () {
+    it('should convert image type to specified by `format` option with custom extension', function () {
       let done
       const result = new Promise(resolve => {
         done = resolve
@@ -81,7 +81,7 @@ describe('gulp-responsive', async function () {
           rename: 'gulp.custom-jpg'
         }
       ]
-      const stream = await responsive(config)
+      const stream = responsive(config)
 
       stream.on('data', async function (file) {
         assertFile(file)
@@ -99,7 +99,7 @@ describe('gulp-responsive', async function () {
       return result
     })
 
-    it('should convert image type to multiple specified by `format` option', async function () {
+    it('should convert image type to multiple specified by `format` option', function () {
       let done
       const result = new Promise(resolve => {
         done = resolve
@@ -111,7 +111,7 @@ describe('gulp-responsive', async function () {
           format: ['jpg', 'webp']
         }
       ]
-      const stream = await responsive(config)
+      const stream = responsive(config)
       let counter = 0
 
       stream.on('data', function (file) {

@@ -6,7 +6,7 @@ import { makeFile } from './helpers.js'
 
 describe('gulp-responsive', function () {
   describe('errorOnEnlargement', function () {
-    it('should emit error when image is enlarged', async function () {
+    it('should emit error when image is enlarged', function () {
       let cb
       const result = new Promise(resolve => {
         cb = resolve
@@ -18,7 +18,7 @@ describe('gulp-responsive', function () {
           withoutEnlargement: true
         }
       ]
-      const stream = await responsive(config)
+      const stream = responsive(config)
 
       stream.on('error', function (err) {
         assert(/Image enlargement is detected/.test(err.message))
@@ -32,7 +32,7 @@ describe('gulp-responsive', function () {
       return result
     })
 
-    it('should emit error when image is enlarged by size in percentage', async function () {
+    it('should emit error when image is enlarged by size in percentage', function () {
       let cb
       const result = new Promise(resolve => {
         cb = resolve
@@ -45,7 +45,7 @@ describe('gulp-responsive', function () {
           withoutEnlargement: true
         }
       ]
-      const stream = await responsive(config)
+      const stream = responsive(config)
 
       stream.on('error', function (err) {
         assert(/Image enlargement is detected/.test(err.message))
@@ -59,7 +59,7 @@ describe('gulp-responsive', function () {
       return result
     })
 
-    it('should not emit error when image is enlarged and errorOnEnlargement is false', async function () {
+    it('should not emit error when image is enlarged and errorOnEnlargement is false', function () {
       let cb
       const result = new Promise(resolve => {
         cb = resolve
@@ -72,7 +72,7 @@ describe('gulp-responsive', function () {
           withoutEnlargement: true
         }
       ]
-      const stream = await responsive(config, {
+      const stream = responsive(config, {
         errorOnEnlargement: false
       })
 
@@ -91,7 +91,7 @@ describe('gulp-responsive', function () {
   })
 
   describe('errorOnUnusedConfig', function () {
-    it('should emit error when config not used', async function () {
+    it('should emit error when config not used', function () {
       let cb
       const result = new Promise(resolve => {
         cb = resolve
@@ -105,7 +105,7 @@ describe('gulp-responsive', function () {
           name: 'notused.png'
         }
       ]
-      const stream = await responsive(config)
+      const stream = responsive(config)
 
       stream.on('error', function (err) {
         assert(
@@ -121,7 +121,7 @@ describe('gulp-responsive', function () {
       return result
     })
 
-    it('should not emit error when config not used and `errorOnUnusedConfig` is false', async function () {
+    it('should not emit error when config not used and `errorOnUnusedConfig` is false', function () {
       let cb
       const result = new Promise(resolve => {
         cb = resolve
@@ -135,7 +135,7 @@ describe('gulp-responsive', function () {
           name: 'notused.png'
         }
       ]
-      const stream = await responsive(config, {
+      const stream = responsive(config, {
         errorOnUnusedConfig: false
       })
 
@@ -154,7 +154,7 @@ describe('gulp-responsive', function () {
   })
 
   describe('errorOnUnusedImage', function () {
-    it('should emit error when image not used', async function () {
+    it('should emit error when image not used', function () {
       let cb
       const result = new Promise(resolve => {
         cb = resolve
@@ -168,7 +168,7 @@ describe('gulp-responsive', function () {
           name: 'notused.png'
         }
       ]
-      const stream = await responsive(config)
+      const stream = responsive(config)
 
       stream.on('error', function (err) {
         assert(
@@ -184,7 +184,7 @@ describe('gulp-responsive', function () {
       return result
     })
 
-    it('should not emit error when image not used and `errorOnUnusedImage` is false', async function () {
+    it('should not emit error when image not used and `errorOnUnusedImage` is false', function () {
       let cb
       const result = new Promise(resolve => {
         cb = resolve
@@ -195,7 +195,7 @@ describe('gulp-responsive', function () {
           name: 'gulp.png'
         }
       ]
-      const stream = await responsive(config, {
+      const stream = responsive(config, {
         errorOnUnusedImage: false
       })
 
@@ -215,7 +215,7 @@ describe('gulp-responsive', function () {
   })
 
   describe('unsupported image format', function () {
-    it('should emit error if image format is unsupported', async function () {
+    it('should emit error if image format is unsupported', function () {
       let cb
       const result = new Promise(resolve => {
         cb = resolve
@@ -226,7 +226,7 @@ describe('gulp-responsive', function () {
           name: 'unsupported.png'
         }
       ]
-      const stream = await responsive(config)
+      const stream = responsive(config)
 
       stream.on('error', function (err) {
         assert(/File `unsupported.png`/.test(err.message))
