@@ -1,9 +1,14 @@
+# 6.0.0
+
+- Switch to eslint
+- Node 18+
+- Update sharp to 0.32.5
+
 # 5.0.0
 
 - Update sharp to 0.32.1
 - Update all dependencies
 - Remove through2 dependency
-- Switch to eslint
 - Switch to esm
 - Node 16+
 

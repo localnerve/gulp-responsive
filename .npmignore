@@ -1,4 +1,6 @@
-.jshintrc
-.travis.yml
 .editorconfig
+jsconfig.json
+.eslintrc.json
+.git*
+examples
 test
