@@ -1,4 +1,4 @@
-/* global describe, it */
+/* eslint-env mocha */
 import responsive from '../lib/index.js'
 import { makeFile, assertFile } from './helpers.js'
 
