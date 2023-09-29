@@ -1,3 +1,7 @@
+# 6.0.1
+
+- Update sharp to 0.32.6
+
 # 6.0.0
 
 - Switch to eslint
