@@ -1,6 +1,6 @@
 {
   "name": "@localnerve/gulp-responsive",
-  "version": "6.0.2",
+  "version": "6.1.0",
   "description": "small patch for gulp-responsive",
   "type": "module",
   "exports": {
@@ -51,12 +51,12 @@
     "plugin-error": "^2.0.1",
     "plur": "^5.1.0",
     "rename": "^1.0.4",
-    "sharp": "^0.32.6",
+    "sharp": "^0.33.1",
     "vinyl": "^3.0.0"
   },
   "devDependencies": {
     "file-type": "^18.7.0",
     "mocha": "^10.2.0",
-    "eslint": "^8.54.0"
+    "eslint": "^8.56.0"
   }
 }
