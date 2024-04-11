@@ -1,5 +1,3 @@
-/* eslint-env mocha */
-
 import assert from 'assert'
 import responsive from '../lib/index.js'
 import { makeFile, assertFile } from './helpers.js'
