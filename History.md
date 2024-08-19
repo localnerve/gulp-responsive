@@ -1,3 +1,19 @@
+# 6.1.6
+
+- Update sharp to 0.33.5
+
+# 6.1.4
+
+- Update sharp to 0.33.4
+
+# 6.1.2
+
+- Update sharp to 0.33.3
+
+# 6.1.1
+
+- Update sharp to 0.33.2
+
 # 6.1.0
 
 - Update sharp to 0.33.1
