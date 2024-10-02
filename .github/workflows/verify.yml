@@ -1,7 +1,7 @@
 name: Verify
 on:
   push:
-    branches: [ master, public-package ]
+    branches: [ master ]
   pull_request:
     branches: [ master, public-package ]
 
@@ -23,4 +23,4 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - run: npm ci
     - name: Run Lint and Test
-      run: npm test
+      run: npm run lint && npm test
