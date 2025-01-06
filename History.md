@@ -1,3 +1,7 @@
+# 6.2.0
+
+ - Update chalk to 5.4.1
+
 # 6.1.6
 
 - Update sharp to 0.33.5
