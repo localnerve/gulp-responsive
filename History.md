@@ -1,6 +1,16 @@
+# 7.0.1
+
+- update devdeps
+- update usage of file-type in test
+
+# 7.0.0
+
+- Node 20+
+- minimatch@^10.0.1
+
 # 6.2.0
 
- - Update chalk to 5.4.1
+- Update chalk to 5.4.1
 
 # 6.1.6
 
