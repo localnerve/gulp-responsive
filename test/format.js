@@ -1,9 +1,9 @@
 import assert from 'assert'
+import { fileTypeFromBuffer as fileType } from 'file-type';
 import responsive from '../lib/index.js'
 import { makeFile, assertFile } from './helpers.js'
 
 describe('gulp-responsive', async function () {
-  const { fileTypeFromBuffer: fileType } = await import('file-type')
 
   describe('image format', function () {
     it('should convert image type to specified by `format` option', function () {
