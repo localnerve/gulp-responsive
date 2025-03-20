@@ -214,6 +214,17 @@ Default: `false`
 
 Silence messages and stats if 0 images were created. If you wish to supress all messages and stats, set the `options.stats` to `false` as well.
 
+##### postprocess
+
+Type: `Function`  
+Default: `undefined`
+
+If you supply a postprocess function, it will be called after every successfully processed file. It receives a vinyl object of the original file, and a vinyl object of the new file. For Vinyl object details, see [vinyl](https://github.com/gulpjs/vinyl/blob/master/README.md).
+
+Signature: `function postprocess (originalVinylFile, newVinylFile)`
+
+##### Global Configuration Options
+
 > You can specify **global default value** for any of the [configuration options](#configuration-unit).
 
 ```js
