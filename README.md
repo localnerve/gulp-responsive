@@ -219,9 +219,9 @@ Silence messages and stats if 0 images were created. If you wish to supress all 
 Type: `Function`  
 Default: `undefined`
 
-If you supply a postprocess function, it will be called after every successfully processed file. It receives a vinyl object of the original file, and a vinyl object of the new file. For Vinyl object details, see [vinyl](https://github.com/gulpjs/vinyl/blob/master/README.md).
+If you supply a postprocess function, it will be called after every successfully processed file. It receives a vinyl object of the original file, the config used to process it, and a vinyl object of the new file. For Vinyl object details, see [vinyl](https://github.com/gulpjs/vinyl/blob/master/README.md).
 
-Signature: `function postprocess (originalVinylFile, newVinylFile)`
+Signature: `function postprocess (originalVinylFile, config, newVinylFile)`
 
 ##### Global Configuration Options
 
