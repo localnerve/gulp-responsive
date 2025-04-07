@@ -1,3 +1,15 @@
+# 7.3.0
+
+- Update sharp to 0.34.0
+
+# 7.2.0
+
+- add config to postprocess
+
+# 7.1.0
+
+- add postprocess feature
+
 # 7.0.1
 
 - update devdeps
