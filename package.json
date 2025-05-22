@@ -1,6 +1,6 @@
 {
   "name": "@localnerve/gulp-responsive",
-  "version": "7.3.2",
+  "version": "7.3.3",
   "description": "small patch for gulp-responsive",
   "type": "module",
   "exports": {
@@ -51,7 +51,7 @@
     "plugin-error": "^2.0.1",
     "plur": "^5.1.0",
     "rename": "^1.0.4",
-    "sharp": "^0.34.1",
+    "sharp": "^0.34.2",
     "vinyl": "^3.0.0"
   },
   "devDependencies": {
