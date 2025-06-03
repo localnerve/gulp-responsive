@@ -2,9 +2,11 @@
 
 ![Verify](https://github.com/localnerve/gulp-responsive/workflows/Verify/badge.svg)
 
-> This is the same as [the original](https://github.com/mahnunchik/gulp-responsive) except with updated dependencies and code
+> This is mostly the same as [the original](https://github.com/mahnunchik/gulp-responsive) except with updated dependencies and code.
 
 > Generates images at different sizes
+
+> Exposes a `postprocess` option to allow you to capture the work of this transform and use it in other build operations.
 
 ## Installation
 
