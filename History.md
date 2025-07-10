@@ -1,3 +1,7 @@
+# 7.4.2
+
+- Update sharp to 0.34.3
+
 # 7.3.1
 
 - Update sharp to 0.34.1
