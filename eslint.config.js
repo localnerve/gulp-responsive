@@ -11,6 +11,14 @@ const commonRules = {
 };
 
 export default [{
+  name: 'global',
+  ignores: [
+    '**/tmp/**',
+    'node_modules/**',
+    'examples/**',
+    'coverage/**'
+  ]
+}, {
   files: [
     'lib/**'
   ],
