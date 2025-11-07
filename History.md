@@ -1,3 +1,19 @@
+# 7.6.1
+
+- Update sharp to 0.34.5
+
+# 7.6.0
+
+- Remove plur from dependencies
+
+# 7.5.0
+
+- minimatch@10.1.1
+
+# 7.4.4
+
+- Update sharp to 0.34.4
+
 # 7.4.2
 
 - Update sharp to 0.34.3
