@@ -37,7 +37,6 @@ export default [{
   rules: commonRules,
   languageOptions: {
     globals: {
-      ...globals.mocha,
       ...globals.node
     }
   }

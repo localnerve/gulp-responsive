@@ -1,8 +1,9 @@
-import assert from 'assert'
-import path from 'path'
+import { describe, it } from 'node:test'
+import * as url from 'node:url'
+import assert from 'node:assert'
+import path from 'node:path'
 import responsive from '../lib/index.js'
 import { makeFile, assertFile } from './helpers.js'
-import * as url from 'node:url'
 
 const thisDirname = url.fileURLToPath(new URL('.', import.meta.url))
 

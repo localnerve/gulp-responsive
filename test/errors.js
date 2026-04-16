@@ -1,4 +1,5 @@
-import assert from 'assert'
+import { describe, it } from 'node:test'
+import assert from 'node:assert'
 import responsive from '../lib/index.js'
 import { makeFile } from './helpers.js'
 

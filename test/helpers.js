@@ -1,8 +1,8 @@
-import assert from 'assert'
-import path from 'path'
-import fs from 'fs'
+import * as url from 'node:url'
+import assert from 'node:assert'
+import path from 'node:path'
+import fs from 'node:fs'
 import Vinyl from 'vinyl'
-import * as url from 'url'
 
 const thisDirname = url.fileURLToPath(new URL('.', import.meta.url))
 
