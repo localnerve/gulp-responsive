@@ -4,10 +4,10 @@ import { fileTypeFromBuffer as fileType } from 'file-type';
 import responsive from '../lib/index.js'
 import { makeFile, assertFile } from './helpers.js'
 
-describe('gulp-responsive', async function () {
+describe('gulp-responsive', async () => {
 
-  describe('image format', function () {
-    it('should convert image type to specified by `format` option', function () {
+  describe('image format', () => {
+    it('should convert image type to specified by `format` option', () => {
       let done
       const result = new Promise(resolve => {
         done = resolve
@@ -21,14 +21,14 @@ describe('gulp-responsive', async function () {
       ]
       const stream = responsive(config)
 
-      stream.on('data', async function (file) {
+      stream.on('data', async file => {
         assertFile(file)
 
         const result = await fileType(file.contents)
         assert.strictEqual(result.mime, 'image/jpeg')
       })
 
-      stream.on('end', function () {
+      stream.on('end', () => {
         done()
       })
 
@@ -37,7 +37,7 @@ describe('gulp-responsive', async function () {
       return result
     })
 
-    it('should convert image type to format parsed from output image name', function () {
+    it('should convert image type to format parsed from output image name', () => {
       let done
       const result = new Promise(resolve => {
         done = resolve
@@ -51,14 +51,14 @@ describe('gulp-responsive', async function () {
       ]
       const stream = responsive(config)
 
-      stream.on('data', async function (file) {
+      stream.on('data', async file => {
         assertFile(file)
 
         const result = await fileType(file.contents)
         assert.strictEqual(result.mime, 'image/jpeg')
       })
 
-      stream.on('end', function () {
+      stream.on('end', () => {
         done()
       })
 
@@ -67,7 +67,7 @@ describe('gulp-responsive', async function () {
       return result
     })
 
-    it('should convert image type to specified by `format` option with custom extension', function () {
+    it('should convert image type to specified by `format` option with custom extension', () => {
       let done
       const result = new Promise(resolve => {
         done = resolve
@@ -82,14 +82,14 @@ describe('gulp-responsive', async function () {
       ]
       const stream = responsive(config)
 
-      stream.on('data', async function (file) {
+      stream.on('data', async file => {
         assertFile(file)
 
         const result = await fileType(file.contents)
         assert.strictEqual(result.mime, 'image/webp')
       })
 
-      stream.on('end', function () {
+      stream.on('end', () => {
         done()
       })
 
@@ -98,7 +98,7 @@ describe('gulp-responsive', async function () {
       return result
     })
 
-    it('should convert image type to multiple specified by `format` option', function () {
+    it('should convert image type to multiple specified by `format` option', () => {
       let done
       const result = new Promise(resolve => {
         done = resolve
@@ -113,7 +113,7 @@ describe('gulp-responsive', async function () {
       const stream = responsive(config)
       let counter = 0
 
-      stream.on('data', function (file) {
+      stream.on('data', file => {
         counter++
 
         assertFile(file)
@@ -122,7 +122,7 @@ describe('gulp-responsive', async function () {
         }
       })
 
-      stream.on('end', function () {
+      stream.on('end', () => {
         done()
       })
 

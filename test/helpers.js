@@ -1,10 +1,9 @@
-import * as url from 'node:url'
 import assert from 'node:assert'
 import path from 'node:path'
 import fs from 'node:fs'
 import Vinyl from 'vinyl'
 
-const thisDirname = url.fileURLToPath(new URL('.', import.meta.url))
+const thisDirname = import.meta.dirname
 
 export function makeFile (name, file) {
   if (!file) {

@@ -23,4 +23,10 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - run: npm ci
     - name: Run Lint and Test
-      run: npm run lint && npm test
+      run: npm run lint && npm run coverage
+    - name: Coverage Upload
+      if: ${{ success() }}
+      uses: coverallsapp/github-action@648a8eb78e6d50909eff900e4ec85cab4524a45b # 2.3.6
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        path-to-lcov: ./coverage/lcov.info
