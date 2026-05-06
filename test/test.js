@@ -1,14 +1,13 @@
 import { describe, it } from 'node:test'
-import * as url from 'node:url'
 import assert from 'node:assert'
 import path from 'node:path'
 import responsive from '../lib/index.js'
 import { makeFile, assertFile } from './helpers.js'
 
-const thisDirname = url.fileURLToPath(new URL('.', import.meta.url))
+const thisDirname = import.meta.dirname;
 
-describe('gulp-responsive', function () {
-  it('should not do anything without images and configs', function () {
+describe('gulp-responsive', () => {
+  it('should not do anything without images and configs', () => {
     let cb
     const result = new Promise(resolve => {
       cb = resolve
@@ -16,7 +15,7 @@ describe('gulp-responsive', function () {
     const stream = responsive()
 
     stream.on('end', cb)
-    stream.on('data', function () {
+    stream.on('data', () => {
       throw new Error('data should not be provided')
     })
 
@@ -24,7 +23,7 @@ describe('gulp-responsive', function () {
     return result
   })
 
-  it('should provide one image when exactly one image and one config are provided', function () {
+  it('should provide one image when exactly one image and one config are provided', () => {
     let cb
     const result = new Promise(resolve => {
       cb = resolve
@@ -38,7 +37,7 @@ describe('gulp-responsive', function () {
 
     let counter = 0
 
-    stream.on('data', function (file) {
+    stream.on('data', file => {
       counter++
       assertFile(file)
       if (counter > 1) {
@@ -46,7 +45,7 @@ describe('gulp-responsive', function () {
       }
     })
 
-    stream.on('end', function () {
+    stream.on('end', () => {
       assert.strictEqual(counter, 1)
       cb()
     })
@@ -56,7 +55,7 @@ describe('gulp-responsive', function () {
     return result
   })
 
-  it('should support source file in SVG format', function () {
+  it('should support source file in SVG format', () => {
     let cb
     const result = new Promise(resolve => {
       cb = resolve
@@ -71,7 +70,7 @@ describe('gulp-responsive', function () {
 
     let counter = 0
 
-    stream.on('data', function (file) {
+    stream.on('data', file => {
       counter++
       assertFile(file)
       if (counter > 1) {
@@ -79,7 +78,7 @@ describe('gulp-responsive', function () {
       }
     })
 
-    stream.on('end', function () {
+    stream.on('end', () => {
       assert.strictEqual(counter, 1)
       cb()
     })
@@ -89,7 +88,7 @@ describe('gulp-responsive', function () {
     return result
   })
 
-  it('should provide two image when one image and exactly two configs are provided', function () {
+  it('should provide two image when one image and exactly two configs are provided', () => {
     let cb
     const result = new Promise(resolve => {
       cb = resolve
@@ -106,7 +105,7 @@ describe('gulp-responsive', function () {
 
     let counter = 0
 
-    stream.on('data', function (file) {
+    stream.on('data', file => {
       counter++
       assertFile(file)
       if (counter > 2) {
@@ -114,7 +113,7 @@ describe('gulp-responsive', function () {
       }
     })
 
-    stream.on('end', function () {
+    stream.on('end', () => {
       assert.strictEqual(counter, 2)
       cb()
     })
@@ -124,7 +123,7 @@ describe('gulp-responsive', function () {
     return result
   })
 
-  it('should provide two image when one image match two configs', function () {
+  it('should provide two image when one image match two configs', () => {
     let cb
     const result = new Promise(resolve => {
       cb = resolve
@@ -141,7 +140,7 @@ describe('gulp-responsive', function () {
 
     let counter = 0
 
-    stream.on('data', function (file) {
+    stream.on('data', file => {
       counter++
       assertFile(file)
       if (counter > 2) {
@@ -149,7 +148,7 @@ describe('gulp-responsive', function () {
       }
     })
 
-    stream.on('end', function () {
+    stream.on('end', () => {
       assert.strictEqual(counter, 2)
       cb()
     })
@@ -159,8 +158,8 @@ describe('gulp-responsive', function () {
     return result
   })
 
-  describe('rename image', function () {
-    it('should provide renamed image when rename is string', function () {
+  describe('rename image', () => {
+    it('should provide renamed image when rename is string', () => {
       let cb
       const result = new Promise(resolve => {
         cb = resolve
@@ -173,7 +172,7 @@ describe('gulp-responsive', function () {
       ]
       const stream = responsive(config)
 
-      stream.on('data', function (file) {
+      stream.on('data', file => {
         assertFile(file)
         assert.strictEqual(
           file.path,
@@ -181,7 +180,7 @@ describe('gulp-responsive', function () {
         )
       })
 
-      stream.on('end', function () {
+      stream.on('end', () => {
         cb()
       })
 
@@ -190,7 +189,7 @@ describe('gulp-responsive', function () {
       return result
     })
 
-    it('should provide renamed image when rename is object', function () {
+    it('should provide renamed image when rename is object', () => {
       let cb
       const result = new Promise(resolve => {
         cb = resolve
@@ -205,7 +204,7 @@ describe('gulp-responsive', function () {
       ]
       const stream = responsive(config)
 
-      stream.on('data', function (file) {
+      stream.on('data', file => {
         assertFile(file)
         assert.strictEqual(
           file.path,
@@ -213,7 +212,7 @@ describe('gulp-responsive', function () {
         )
       })
 
-      stream.on('end', function () {
+      stream.on('end', () => {
         cb()
       })
 
@@ -222,7 +221,7 @@ describe('gulp-responsive', function () {
       return result
     })
 
-    it('should provide renamed image when rename is function', function () {
+    it('should provide renamed image when rename is function', () => {
       let cb
       const result = new Promise(resolve => {
         cb = resolve
@@ -230,7 +229,7 @@ describe('gulp-responsive', function () {
       const config = [
         {
           name: 'gulp.png',
-          rename: function (path) {
+          rename: path =>  {
             path.basename += '-renamed-by-function'
             return path
           }
@@ -238,7 +237,7 @@ describe('gulp-responsive', function () {
       ]
       const stream = responsive(config)
 
-      stream.on('data', function (file) {
+      stream.on('data', file => {
         assertFile(file)
         assert.strictEqual(
           file.path,
@@ -246,7 +245,7 @@ describe('gulp-responsive', function () {
         )
       })
 
-      stream.on('end', function () {
+      stream.on('end', () => {
         cb()
       })
 
@@ -256,8 +255,8 @@ describe('gulp-responsive', function () {
     })
   })
 
-  describe('unmatched/unused images', function () {
-    it('should not pass through unmatched file by default when `errorOnUnusedImage` is false', function () {
+  describe('unmatched/unused images', () => {
+    it('should not pass through unmatched file by default when `errorOnUnusedImage` is false', () => {
       let cb
       const result = new Promise(resolve => {
         cb = resolve
@@ -271,11 +270,11 @@ describe('gulp-responsive', function () {
 
       let counter = 0
 
-      stream.on('data', function () {
+      stream.on('data', () => {
         counter++
       })
 
-      stream.on('end', function () {
+      stream.on('end', () => {
         assert.strictEqual(counter, 0)
         cb()
       })
@@ -285,7 +284,7 @@ describe('gulp-responsive', function () {
       return result
     })
 
-    it('should pass through unmatched file when `passThroughUnused` is true and `errorOnUnusedImage` is false', function () {
+    it('should pass through unmatched file when `passThroughUnused` is true and `errorOnUnusedImage` is false', () => {
       let cb
       const result = new Promise(resolve => {
         cb = resolve
@@ -302,7 +301,7 @@ describe('gulp-responsive', function () {
 
       let counter = 0
 
-      stream.on('data', function (file) {
+      stream.on('data', file => {
         counter++
         if (counter > 1) {
           throw new Error('more than two files are provided')
@@ -311,7 +310,7 @@ describe('gulp-responsive', function () {
         assert.deepStrictEqual(file, expectedFile)
       })
 
-      stream.on('end', function () {
+      stream.on('end', () => {
         assert.strictEqual(counter, 1)
         cb()
       })
@@ -321,7 +320,7 @@ describe('gulp-responsive', function () {
       return result
     })
 
-    it('should skip enlarged image when `skipOnEnlargement` is true', function () {
+    it('should skip enlarged image when `skipOnEnlargement` is true', () => {
       let cb
       const result = new Promise(resolve => {
         cb = resolve
@@ -338,11 +337,11 @@ describe('gulp-responsive', function () {
         skipOnEnlargement: true
       })
 
-      stream.on('data', function () {
+      stream.on('data', () => {
         throw new Error('enlarged image not been skipped')
       })
 
-      stream.on('end', function () {
+      stream.on('end', () => {
         cb()
       })
 
@@ -350,5 +349,68 @@ describe('gulp-responsive', function () {
       stream.end()
       return result
     })
+  })
+
+  it('should clip image when height is supplied withoutEnlargement', () => {
+    let cb, originalSize
+    const result = new Promise(resolve => {
+      cb = resolve
+    })
+    const config = [
+      {
+        name: 'gulp.png',
+        height: 1000
+      }
+    ]
+
+    const stream = responsive(config, {
+      errorOnEnlargement: false
+    })
+
+    stream.on('data', file => {
+      assertFile(file)
+      assert.ok(file.contents.length < originalSize) // clipped
+    })
+
+    stream.on('end', () => {
+      cb()
+    })
+
+    const file = makeFile('gulp.png')
+    originalSize = file.contents.length
+  
+    stream.write(file)
+    stream.end()
+    return result
+  })
+
+  it('should call postprocess when specified', () => {
+    let cb, counter = 0
+    const result = new Promise(resolve => {
+      cb = resolve
+    })
+    const config = [
+      {
+        name: 'gulp.png'
+      }
+    ]
+
+    const stream = responsive(config, {
+      postprocess: () => counter++
+    })
+
+    stream.on('data', file => {
+      assertFile(file)
+    })
+
+    stream.on('end', () => {
+      assert.strictEqual(counter, 1)
+      cb()
+    })
+
+    const file = makeFile('gulp.png')
+    stream.write(file)
+    stream.end()
+    return result
   })
 })

@@ -2,9 +2,9 @@ import { describe, it } from 'node:test'
 import assert from 'node:assert'
 import prepareConfig from '../lib/config.js'
 
-describe('gulp-responsive', function () {
-  describe('config', function () {
-    it('should set default values for unspecified config options', function () {
+describe('gulp-responsive', () => {
+  describe('config', () => {
+    it('should set default values for unspecified config options', () => {
       const config = prepareConfig([
         {
           name: 'gulp.png'
@@ -45,7 +45,7 @@ describe('gulp-responsive', function () {
       assert.strictEqual(config[0].format, null)
     })
 
-    it('should not override specified values', function () {
+    it('should not override specified values', () => {
       const config = prepareConfig([
         {
           name: 'gulp.png',
@@ -116,8 +116,8 @@ describe('gulp-responsive', function () {
     })
   })
 
-  describe('config parsing', function () {
-    it('should parse config object', function () {
+  describe('config parsing', () => {
+    it('should parse config object', () => {
       const config = prepareConfig({
         'gulp.png': {
           width: 100
@@ -128,7 +128,7 @@ describe('gulp-responsive', function () {
       assert.strictEqual(config[0].name, 'gulp.png')
     })
 
-    it('should parse config object of arrays', function () {
+    it('should parse config object of arrays', () => {
       const config = prepareConfig({
         'gulp.png': [
           {
@@ -147,7 +147,7 @@ describe('gulp-responsive', function () {
       assert.strictEqual(config[1].width, 200)
     })
 
-    it('should leave config array as is', function () {
+    it('should leave config array as is', () => {
       const config = prepareConfig([
         {
           name: 'gulp1.png',
@@ -167,8 +167,8 @@ describe('gulp-responsive', function () {
     })
   })
 
-  describe('global config', function () {
-    it('should override default values', function () {
+  describe('global config', () => {
+    it('should override default values', () => {
       const globalConfig = {
         crop: 'test',
         embed: 'test',
@@ -242,7 +242,7 @@ describe('gulp-responsive', function () {
       assert.strictEqual(config[0].format, 'test')
     })
 
-    it('should not override values specified per file', function () {
+    it('should not override values specified per file', () => {
       const globalConfig = {
         crop: 'global',
         embed: 'global',

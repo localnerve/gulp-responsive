@@ -5,13 +5,13 @@ import { makeFile, assertFile } from './helpers.js'
 describe('gulp-responsive', () => {
   function runTest (config, cb) {
     const stream = responsive(config)
-    stream.on('end', function () {
+    stream.on('end', () => {
       cb()
     })
-    stream.on('data', function (file) {
+    stream.on('data', file => {
       assertFile(file)
     })
-    stream.on('error', function (e) {
+    stream.on('error', e => {
       cb(e)
     })
     stream.write(makeFile('gulp.png'))

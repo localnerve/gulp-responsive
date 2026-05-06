@@ -3,9 +3,9 @@ import assert from 'node:assert'
 import responsive from '../lib/index.js'
 import { makeFile } from './helpers.js'
 
-describe('gulp-responsive', function () {
-  describe('errorOnEnlargement', function () {
-    it('should emit error when image is enlarged', function () {
+describe('gulp-responsive', () => {
+  describe('errorOnEnlargement', () => {
+    it('should emit error when image is enlarged', () => {
       let cb
       const result = new Promise(resolve => {
         cb = resolve
@@ -19,19 +19,19 @@ describe('gulp-responsive', function () {
       ]
       const stream = responsive(config)
 
-      stream.on('error', function (err) {
+      stream.on('error', err => {
         assert(/Image enlargement is detected/.test(err.message))
         cb()
       })
 
-      stream.on('data', function () {})
+      stream.on('data', () => {})
 
       stream.write(makeFile('gulp.png'))
       stream.end()
       return result
     })
 
-    it('should emit error when image is enlarged by size in percentage', function () {
+    it('should emit error when image is enlarged by size in percentage', () => {
       let cb
       const result = new Promise(resolve => {
         cb = resolve
@@ -46,19 +46,19 @@ describe('gulp-responsive', function () {
       ]
       const stream = responsive(config)
 
-      stream.on('error', function (err) {
+      stream.on('error', err => {
         assert(/Image enlargement is detected/.test(err.message))
         cb()
       })
 
-      stream.on('data', function () {})
+      stream.on('data', () => {})
 
       stream.write(makeFile('gulp.png'))
       stream.end()
       return result
     })
 
-    it('should not emit error when image is enlarged and errorOnEnlargement is false', function () {
+    it('should not emit error when image is enlarged and errorOnEnlargement is false', () => {
       let cb
       const result = new Promise(resolve => {
         cb = resolve
@@ -75,13 +75,13 @@ describe('gulp-responsive', function () {
         errorOnEnlargement: false
       })
 
-      stream.on('error', function (err) {
+      stream.on('error', err => {
         throw err
       })
 
       stream.on('end', cb)
 
-      stream.on('data', function () {})
+      stream.on('data', () => {})
 
       stream.write(makeFile('gulp.png'))
       stream.end()
@@ -89,8 +89,8 @@ describe('gulp-responsive', function () {
     })
   })
 
-  describe('errorOnUnusedConfig', function () {
-    it('should emit error when config not used', function () {
+  describe('errorOnUnusedConfig', () => {
+    it('should emit error when config not used', () => {
       let cb
       const result = new Promise(resolve => {
         cb = resolve
@@ -106,21 +106,21 @@ describe('gulp-responsive', function () {
       ]
       const stream = responsive(config)
 
-      stream.on('error', function (err) {
+      stream.on('error', err => {
         assert(
           /Available images do not match the following config/.test(err.message)
         )
         cb()
       })
 
-      stream.on('data', function () {})
+      stream.on('data', () => {})
 
       stream.write(makeFile('gulp.png'))
       stream.end()
       return result
     })
 
-    it('should not emit error when config not used and `errorOnUnusedConfig` is false', function () {
+    it('should not emit error when config not used and `errorOnUnusedConfig` is false', () => {
       let cb
       const result = new Promise(resolve => {
         cb = resolve
@@ -138,13 +138,13 @@ describe('gulp-responsive', function () {
         errorOnUnusedConfig: false
       })
 
-      stream.on('error', function (err) {
+      stream.on('error', err => {
         throw err
       })
 
       stream.on('end', cb)
 
-      stream.on('data', function () {})
+      stream.on('data', () => {})
 
       stream.write(makeFile('gulp.png'))
       stream.end()
@@ -152,8 +152,8 @@ describe('gulp-responsive', function () {
     })
   })
 
-  describe('errorOnUnusedImage', function () {
-    it('should emit error when image not used', function () {
+  describe('errorOnUnusedImage', () => {
+    it('should emit error when image not used', () => {
       let cb
       const result = new Promise(resolve => {
         cb = resolve
@@ -169,21 +169,21 @@ describe('gulp-responsive', function () {
       ]
       const stream = responsive(config)
 
-      stream.on('error', function (err) {
+      stream.on('error', err => {
         assert(
           /Available images do not match the following config/.test(err.message)
         )
         cb()
       })
 
-      stream.on('data', function () {})
+      stream.on('data', () => {})
 
       stream.write(makeFile('gulp.png'))
       stream.end()
       return result
     })
 
-    it('should not emit error when image not used and `errorOnUnusedImage` is false', function () {
+    it('should not emit error when image not used and `errorOnUnusedImage` is false', () => {
       let cb
       const result = new Promise(resolve => {
         cb = resolve
@@ -198,13 +198,13 @@ describe('gulp-responsive', function () {
         errorOnUnusedImage: false
       })
 
-      stream.on('error', function (err) {
+      stream.on('error', err => {
         throw err
       })
 
       stream.on('end', cb)
 
-      stream.on('data', function () {})
+      stream.on('data', () => {})
 
       stream.write(makeFile('gulp.png'))
       stream.write(makeFile('unused.png', 'gulp.png'))
@@ -213,8 +213,8 @@ describe('gulp-responsive', function () {
     })
   })
 
-  describe('unsupported image format', function () {
-    it('should emit error if image format is unsupported', function () {
+  describe('unsupported image format', () => {
+    it('should emit error if image format is unsupported', () => {
       let cb
       const result = new Promise(resolve => {
         cb = resolve
@@ -227,12 +227,12 @@ describe('gulp-responsive', function () {
       ]
       const stream = responsive(config)
 
-      stream.on('error', function (err) {
+      stream.on('error', err => {
         assert(/File `unsupported.png`/.test(err.message))
         cb()
       })
 
-      stream.on('data', function () {})
+      stream.on('data', () => {})
 
       stream.write(makeFile('unsupported.png', '../../README.md'))
       stream.end()
