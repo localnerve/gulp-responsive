@@ -23,9 +23,16 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - run: npm ci
     - name: Run Lint and Test
+      # If Node version does not start with 26, run lint and coverage
+      if: ${{ !startsWith(matrix.node-version, '26') }}
       run: npm run lint && npm run coverage
+    - name: Run Lint and Test (Node 26 Skip Coverage)
+      # If Node version starts with 26, run lint and test only. Wait for c8 yargs@18
+      if: ${{ startsWith(matrix.node-version, '26') }}
+      run: npm run lint && npm test
     - name: Coverage Upload
-      if: ${{ success() }}
+      # Only run if previous steps succeeded AND it is NOT Node 26
+      if: ${{ success() && !startsWith(matrix.node-version, '26') }}
       uses: coverallsapp/github-action@5cbfd81b66ca5d10c19b062c04de0199c215fb6e # 2.3.7
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
