@@ -4,3 +4,7 @@ jsconfig.json
 .git*
 examples
 test
+coverage
+.c8rc.json
+History.md
+eslint.config.js
