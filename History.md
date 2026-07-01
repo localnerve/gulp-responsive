@@ -1,3 +1,7 @@
+#7.9.2
+
+- Update sharp to 0.35.3
+
 # 7.9.1
 
 - Update sharp to 0.35.2
