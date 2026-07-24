@@ -1,4 +1,8 @@
-#7.9.2
+# 8.0.0
+
+- Update Node requirement: "^20.19.0 || ^22.12.0 || >=23"
+
+# 7.9.2
 
 - Update sharp to 0.35.3
 
