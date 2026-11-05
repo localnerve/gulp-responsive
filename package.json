@@ -1,6 +1,6 @@
 {
   "name": "@localnerve/gulp-responsive",
-  "version": "8.0.4",
+  "version": "9.0.0",
   "description": "small patch for gulp-responsive",
   "type": "module",
   "exports": {
@@ -62,7 +62,7 @@
     }
   ],
   "dependencies": {
-    "minimatch": "^10.2.6",
+    "minimatch": "^11.0.4",
     "plugin-error": "^2.0.1",
     "rename": "^1.0.4",
     "sharp": "^0.35.5",
@@ -71,8 +71,12 @@
   "devDependencies": {
     "@eslint/js": "^10.0.1",
     "c8": "^12.0.0",
-    "eslint": "^10.11.0",
-    "file-type": "^22.1.1",
-    "globals": "^17.12.0"
+    "eslint": "^10.14.0",
+    "file-type": "^22.3.0",
+    "globals": "^17.14.0"
+  },
+  "overrides": {
+    "minimatch": "^11.0.4",
+    "glob": "^14.0.3"
   }
 }

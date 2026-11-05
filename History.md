@@ -1,3 +1,7 @@
+# 9.0.0
+
+- Update minimatch to 11.0.4
+
 # 8.0.0
 
 - Update Node requirement: "^20.19.0 || ^22.12.0 || >=23"
